@@ -434,7 +434,6 @@ class AxisLimits(_BaseAxisLimits):
                 normalize(v, triple) for v in (minV, defaultV, maxV)
             )
 
-
         fvarAxes = fvar.getAxes()
         for tag, triple in normalizedLimits.items():
             minV, defaultV, maxV = fvarAxes[tag]
@@ -444,7 +443,9 @@ class AxisLimits(_BaseAxisLimits):
             distancePositive = maxV - defaultV
 
             if triple is None:  # Drop
-                normalizedLimits[tag] = NormalizedAxisTripleAndDistances(0, 0, 0, distanceNegative, distancePositive)
+                normalizedLimits[tag] = NormalizedAxisTripleAndDistances(
+                    0, 0, 0, distanceNegative, distancePositive
+                )
                 continue
 
             normalizedLimits[tag] = NormalizedAxisTripleAndDistances(
